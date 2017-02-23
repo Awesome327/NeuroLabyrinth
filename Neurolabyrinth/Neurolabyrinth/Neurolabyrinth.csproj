@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GAF, Version=2.3.0.22457, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GAF.2.3.0\lib\net45\GAF.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NeuronDotNet.Core45, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NeuronDotNet.Core45.3.0.0.1\lib\net45\NeuronDotNet.Core45.dll</HintPath>
       <Private>True</Private>

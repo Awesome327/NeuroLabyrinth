@@ -1,9 +1,11 @@
 ﻿using NeuronDotNet.Core.Backpropagation;
+using NeuronDotNet.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GAF;
 
 namespace Neurolabyrinth
 {
@@ -37,7 +39,7 @@ namespace Neurolabyrinth
                 foreach (BackpropagationSynapse synapse in connector.Synapses)
                 {
                     synapse.Weight = weights[index++];
-                    synapse.SourceNeuron.SetBias(weights[index++]);
+                   // synapse.SourceNeuron.SetBias(weights[index++]);
 
                 }
             }
