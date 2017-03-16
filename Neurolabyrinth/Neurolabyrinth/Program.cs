@@ -34,7 +34,7 @@ namespace Neurolabyrinth
             player plyr = new player();
 
             laby.Update(laby);
-            
+
             Console.WriteLine(laby.GetPlayerPosition(laby.Laby));
 
             do
@@ -44,20 +44,32 @@ namespace Neurolabyrinth
                 switch (pressedKey)
                 {
                     case "RightArrow":
-                        laby.Laby = laby.SetPosition(plyr.getPlayerPosition(), plyr.move("R"), laby.Laby);
-                        laby.Update(laby);
+                        if (laby.Laby[plyr.getPlayerPosition().Item1, plyr.getPlayerPosition().Item2 + 1] != laby.Wall)
+                        {
+                            laby.Laby = laby.SetPosition(plyr.getPlayerPosition(), plyr.move("R"), laby.Laby);
+                            laby.Update(laby);
+                        }
                         break;
                     case "LeftArrow":
-                        laby.Laby = laby.SetPosition(plyr.getPlayerPosition(), plyr.move("L"), laby.Laby);
-                        laby.Update(laby);
+                        if (laby.Laby[plyr.getPlayerPosition().Item1, plyr.getPlayerPosition().Item2 - 1] != laby.Wall)
+                        {
+                            laby.Laby = laby.SetPosition(plyr.getPlayerPosition(), plyr.move("L"), laby.Laby);
+                            laby.Update(laby);
+                        }
                         break;
                     case "UpArrow":
-                        laby.Laby = laby.SetPosition(plyr.getPlayerPosition(), plyr.move("U"), laby.Laby);
-                        laby.Update(laby);
+                        if (laby.Laby[plyr.getPlayerPosition().Item1 - 1, plyr.getPlayerPosition().Item2] != laby.Wall)
+                        {
+                            laby.Laby = laby.SetPosition(plyr.getPlayerPosition(), plyr.move("U"), laby.Laby);
+                            laby.Update(laby);
+                        }
                         break;
                     case "DownArrow":
-                        laby.Laby = laby.SetPosition(plyr.getPlayerPosition(), plyr.move("D"), laby.Laby);
-                        laby.Update(laby);
+                        if (laby.Laby[plyr.getPlayerPosition().Item1 + 1, plyr.getPlayerPosition().Item2] != laby.Wall)
+                        {
+                            laby.Laby = laby.SetPosition(plyr.getPlayerPosition(), plyr.move("D"), laby.Laby);
+                            laby.Update(laby);
+                        }
                         break;
                 }
             } while (finished != true);

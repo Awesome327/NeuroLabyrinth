@@ -25,7 +25,7 @@ namespace Neurolabyrinth
         {
             posX = newPosX;
             posY = newPosY;
-            Console.WriteLine("POS: " + posX + "|" + posY);
+            //Console.WriteLine("POS: " + posX + "|" + posY);
         }
 
         public Tuple<int,int> move(string dir)

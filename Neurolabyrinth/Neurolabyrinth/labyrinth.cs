@@ -15,6 +15,13 @@ namespace Neurolabyrinth
         const int player = 2;
         const int weg = 0;
         const int wall = 1;
+        const int finish = 3;
+        public int Wall
+        {
+            get { return wall; }
+        }
+
+        bool finished = false;
         //Labyrinth array
         private int[,] laby = new int[row, column]
         { { 2, 0, 0, 1, 3 },
@@ -57,9 +64,23 @@ namespace Neurolabyrinth
         {
             int tempPosiPlay = labyr[posiPlay.Item1, posiPlay.Item2];
             int tempNewPosi = labyr[newPosi.Item1, newPosi.Item2];
-            labyr[posiPlay.Item1, posiPlay.Item2] = tempNewPosi;
-            labyr[newPosi.Item1, newPosi.Item2] = tempPosiPlay;
-            return labyr;
+            if (tempNewPosi == wall)
+            {
+                return labyr;
+            }
+            else if (tempNewPosi == finish)
+            {
+                labyr[posiPlay.Item1, posiPlay.Item2] = 0;
+                labyr[newPosi.Item1, newPosi.Item2] = tempPosiPlay;
+                finished = true;
+                return labyr;
+            }
+            else
+            {
+                labyr[posiPlay.Item1, posiPlay.Item2] = tempNewPosi;
+                labyr[newPosi.Item1, newPosi.Item2] = tempPosiPlay;
+                return labyr;
+            }
 
         }
         public void Update(labyrinth laby)
