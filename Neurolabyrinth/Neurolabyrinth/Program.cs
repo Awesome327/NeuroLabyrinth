@@ -28,15 +28,10 @@ namespace Neurolabyrinth
             network.Initialize();
 
             labyrinth laby = new labyrinth();
-
-            for(int i=0;i<5;i++)
-            {
-                for (int j = 0; j < 5; j++)
-                {
-                    Console.Write(laby.Laby[i, j] + " ");
-                }
-                Console.WriteLine();
-            }
+            laby.Update(laby);
+         
+            laby.Laby =  laby.SetPosition(laby.GetPlayerPosition(laby.Laby), Tuple.Create(0, 0), laby.Laby);
+            laby.Update(laby);
             Console.WriteLine(laby.GetPlayerPosition(laby.Laby));
             Console.Read();
             
@@ -54,6 +49,17 @@ namespace Neurolabyrinth
                    // synapse.SourceNeuron.SetBias(weights[index++]);
 
                 }
+            }
+        }
+        public void Update(labyrinth laby)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    Console.Write(laby.Laby[i, j] + " ");
+                }
+                Console.WriteLine();
             }
         }
     }
