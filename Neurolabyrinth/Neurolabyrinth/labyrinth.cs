@@ -21,7 +21,7 @@ namespace Neurolabyrinth
           { 0, 1, 0, 1, 0 },
           { 0, 1, 0, 1, 2 },
           { 0, 1, 0, 1, 0 },
-          { 0, 1, 0, 0, 0 }, };
+          { 0, 1, 0, 0, 0 }};
 
         //Konstruktor
         public labyrinth()
@@ -39,9 +39,9 @@ namespace Neurolabyrinth
         // get player position
         public Tuple<int, int> GetPlayerPosition(int[,] laby)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < row; i++)
             {
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < column; j++)
                 {
                     if (laby[i, j] == player)
                     {
@@ -50,6 +50,29 @@ namespace Neurolabyrinth
                 }
             }
             return Tuple.Create(0, 0);
+        }
+        //Set player position
+       // public void SetPlayerPosition(Tuple<int,int> PlyrPosi, char Move,)
+       public int[,] SetPosition(Tuple<int,int> posiPlay, Tuple<int,int> newPosi, int[,] labyr)
+        {
+            int tempPosiPlay = labyr[posiPlay.Item1, posiPlay.Item2];
+            int tempNewPosi = labyr[newPosi.Item1, newPosi.Item2];
+            labyr[posiPlay.Item1, posiPlay.Item2] = tempNewPosi;
+            labyr[newPosi.Item1, newPosi.Item2] = tempPosiPlay;
+            return labyr;
+
+        }
+        public void Update(labyrinth laby)
+        {
+            Console.Clear();
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < column; j++)
+                {
+                    Console.Write(laby.Laby[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
