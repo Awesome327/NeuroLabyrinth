@@ -8,37 +8,44 @@ namespace Neurolabyrinth
 {
     class player
     {
-        int[,] pos = { { 0 }, { 0 } };
+        int posX = 0;
+        int posY = 0;
 
         public player()
         {
 
         }
 
-        public int[,] getPlayerPosition()
+        public Tuple<int,int> getPlayerPosition()
         {
-            return pos;
+            return Tuple.Create(posY,posX);
         }
 
-        public void setPlayerPosition(int[,] newPos)
+        public void setPlayerPosition(int newPosX, int newPosY)
         {
-            pos = newPos;
+            posX = newPosX;
+            posY = newPosY;
+            Console.WriteLine("POS: " + posX + "|" + posY);
         }
 
-        public void move(string dir)
+        public Tuple<int,int> move(string dir)
         {
             switch(dir)
             {
-                case "up":
-                    //pos = pos[i, j + 1];
+                case "U":
+                    setPlayerPosition(posX, posY - 1);
                     break;
-                case "down":
+                case "D":
+                    setPlayerPosition(posX, posY + 1);
                     break;
-                case "right":
+                case "R":
+                    setPlayerPosition(posX + 1, posY);
                     break;
-                case "left":
+                case "L":
+                    setPlayerPosition(posX - 1, posY);
                     break;
             }
+            return Tuple.Create(posY, posX);
         }
     }
 }

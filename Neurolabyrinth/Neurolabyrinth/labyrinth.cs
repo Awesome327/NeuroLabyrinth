@@ -17,9 +17,9 @@ namespace Neurolabyrinth
         const int wall = 1;
         //Labyrinth array
         private int[,] laby = new int[row, column]
-        { { 0, 0, 0, 1, 3 },
+        { { 2, 0, 0, 1, 3 },
           { 0, 1, 0, 1, 0 },
-          { 0, 1, 0, 1, 2 },
+          { 0, 1, 0, 1, 0 },
           { 0, 1, 0, 1, 0 },
           { 0, 1, 0, 0, 0 }};
 

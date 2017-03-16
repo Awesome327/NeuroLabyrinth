@@ -31,10 +31,10 @@ namespace Neurolabyrinth
             network.Initialize();
 
             labyrinth laby = new labyrinth();
+            player plyr = new player();
+
             laby.Update(laby);
-         
-            laby.Laby =  laby.SetPosition(laby.GetPlayerPosition(laby.Laby), Tuple.Create(0, 0), laby.Laby);
-            laby.Update(laby);
+            
             Console.WriteLine(laby.GetPlayerPosition(laby.Laby));
 
             do
@@ -44,16 +44,20 @@ namespace Neurolabyrinth
                 switch (pressedKey)
                 {
                     case "RightArrow":
-                        Console.WriteLine("Nach rechts");
+                        laby.Laby = laby.SetPosition(plyr.getPlayerPosition(), plyr.move("R"), laby.Laby);
+                        laby.Update(laby);
                         break;
                     case "LeftArrow":
-                        Console.WriteLine("Nach links");
+                        laby.Laby = laby.SetPosition(plyr.getPlayerPosition(), plyr.move("L"), laby.Laby);
+                        laby.Update(laby);
                         break;
                     case "UpArrow":
-                        Console.WriteLine("Nach oben");
+                        laby.Laby = laby.SetPosition(plyr.getPlayerPosition(), plyr.move("U"), laby.Laby);
+                        laby.Update(laby);
                         break;
                     case "DownArrow":
-                        Console.WriteLine("Nach unten");
+                        laby.Laby = laby.SetPosition(plyr.getPlayerPosition(), plyr.move("D"), laby.Laby);
+                        laby.Update(laby);
                         break;
                 }
             } while (finished != true);
