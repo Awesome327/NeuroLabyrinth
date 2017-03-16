@@ -15,6 +15,9 @@ namespace Neurolabyrinth
 
         static void Main(string[] args)
         {
+
+            Boolean finished = false;
+
             //Layer
             LinearLayer inputLayer = new LinearLayer(25);
             SigmoidLayer hiddenLayer1 = new SigmoidLayer(100);
@@ -28,8 +31,9 @@ namespace Neurolabyrinth
             network.Initialize();
 
             labyrinth laby = new labyrinth();
+            //Player player = new Player();
 
-            for(int i=0;i<5;i++)
+            for (int i = 0; i < 5; i++)
             {
                 for (int j = 0; j < 5; j++)
                 {
@@ -38,8 +42,29 @@ namespace Neurolabyrinth
                 Console.WriteLine();
             }
             Console.WriteLine(laby.GetPlayerPosition(laby.Laby));
+
+            do
+            {
+                string pressedKey = Console.ReadKey(true).Key.ToString();
+
+                switch (pressedKey)
+                {
+                    case "RightArrow":
+                        Console.WriteLine("Nach rechts");
+                        break;
+                    case "LeftArrow":
+                        Console.WriteLine("Nach links");
+                        break;
+                    case "UpArrow":
+                        Console.WriteLine("Nach oben");
+                        break;
+                    case "DownArrow":
+                        Console.WriteLine("Nach unten");
+                        break;
+                }
+            } while (finished != true);
+
             Console.Read();
-            
         }
 
         public static void setNetworkWeights(BackpropagationNetwork aNetwork, double[] weights)
@@ -51,7 +76,7 @@ namespace Neurolabyrinth
                 foreach (BackpropagationSynapse synapse in connector.Synapses)
                 {
                     synapse.Weight = weights[index++];
-                   // synapse.SourceNeuron.SetBias(weights[index++]);
+                    // synapse.SourceNeuron.SetBias(weights[index++]);
 
                 }
             }
