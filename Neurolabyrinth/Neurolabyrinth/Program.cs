@@ -37,8 +37,9 @@ namespace Neurolabyrinth
                 }
                 Console.WriteLine();
             }
-            
+            Console.WriteLine(laby.GetPlayerPosition(laby.Laby));
             Console.Read();
+            
         }
 
         public static void setNetworkWeights(BackpropagationNetwork aNetwork, double[] weights)
