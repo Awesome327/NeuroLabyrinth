@@ -16,18 +16,29 @@ namespace Neurolabyrinth
         static void Main(string[] args)
         {
             //Layer
-            LinearLayer inputLayer = new LinearLayer(100);
-            SigmoidLayer hiddenLayer1 = new SigmoidLayer(1000);
-            SigmoidLayer hiddenLayer2 = new SigmoidLayer(1000);
+            LinearLayer inputLayer = new LinearLayer(25);
+            SigmoidLayer hiddenLayer1 = new SigmoidLayer(100);
             SigmoidLayer outputLayer = new SigmoidLayer(4);
 
             //Connectors
             BackpropagationConnector connector = new BackpropagationConnector(inputLayer, hiddenLayer1);
-            BackpropagationConnector connector2 = new BackpropagationConnector(hiddenLayer1, hiddenLayer2);
-            BackpropagationConnector connector3 = new BackpropagationConnector(hiddenLayer2, outputLayer);
+            BackpropagationConnector connector3 = new BackpropagationConnector(hiddenLayer1, outputLayer);
 
             network = new BackpropagationNetwork(inputLayer, outputLayer);
             network.Initialize();
+
+            labyrinth laby = new labyrinth();
+
+            for(int i=0;i<5;i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    Console.Write(laby.Laby[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+            
+            Console.Read();
         }
 
         public static void setNetworkWeights(BackpropagationNetwork aNetwork, double[] weights)
